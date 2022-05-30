@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        {% load static %}
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+         <!-- Bootstrap CSS -->
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    </head>
+    <style>
+        body{
+            background-image: url({% static 'img/signup.jpg' %});
+            background-size:100%;
+            background-repeat: no-repeat;
+        }
+        {% comment %} navstyle {% endcomment %}
+    .navbar { background-color: rgba(0, 0, 0, 0.575); }
+    .navbar .navbar-nav .nav-link { color: #fff; }
+    .navbar .navbar-nav .nav-link:hover { color: #fbc531; }
+    .navbar .navbar-nav .active > .nav-link { color: #fbc531; }
+    
+    footer a.text-light:hover { color: #fed136!important; text-decoration: none; }
+    footer .cizgi { border-right: 1px solid #535e67; }
+    @media (max-width: 992px) { footer .cizgi { border-right: none; } }
+
+    .bg{
+        color: rgba(248, 248, 248, 0.753);
+        margin-left: 450px;
+        margin-top: 200px;
+    }
+    </style>
+    <body>
+        <header>
+           
+           
+              <nav class="navbar navbar-expand-lg">
+                  <div class="container">
+                      <a class="navbar-brand text-white" href="#"><i class="fa fa-graduation-cap fa-lg mr-2"></i>WELCOME</a>
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nvbCollapse" aria-controls="nvbCollapse">
+                          <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="nvbCollapse">
+                          <ul class="navbar-nav ml-auto">
+                              <li class="nav-item pl-1">
+                                {% for users in users %}
+                                  <a class="nav-link" href="{% url 'user_profile' %}">
+                                    {% if users.user_photo %}
+                                    
+                                        <img src="{{ users.user_photo.url }}"  class="rounded-circle"width="20px" height="20px">
+                                                                
+                                        {% else %}
+                                        <img src="{% static 'img/default.png'%}" class="rounded-circle"width="20px" height="20px" >
+                                        {% endif %}   
+                                      PROFILE</a>
+                                    {% comment %} {% endfor %} {% endcomment %}
+                              </li>
+                              {% comment %} <li class="nav-item active pl-1">
+                                  <a class="nav-link" href="#"><i class="fa fa-th-list fa-fw mr-1"></i></a><i class="fa fa-home fa-fw mr-1"></i>
+                              </li> {% endcomment %}
+                              <li class="nav-item pl-1">
+                                  <a class="nav-link" href="{% url 'apply_leave'%}"><i class="fa fa-th-list fa-fw mr-1"></i>APPLY LEAVE</a>
+                              </li>
+                              <li class="nav-item pl-1">
+                                  <a class="nav-link" href="{% url 'applied_leaves' %}"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>APPLIED LEAVES</a>
+                              </li>
+                              <li class="nav-item pl-1">
+                                  <a class="nav-link" href="{% url 'emp_aproved_leaves' %}"><i class="fa fa-user-plus fa-fw mr-1"></i>APPROVED LEAVES</a>
+                              </li>
+                              <li class="nav-item pl-1">
+                                  <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-in fa-fw mr-1"></i>Log Out</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </nav>
+              
+              <!--# Navbar #-->
+              </header>
+        {% for message in messages %}
+                                     <div {% if message.tags %} class="{{ message.tags}}"{% endif %}>
+                                         {{ message }}
+                                         <button type="button" class="close" id = "override-start"data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                         </button>
+                                     </div>
+                                    {% endfor %}
+
+        <h1 class="bg">Welcome {{ users.user.first_name }} {{ users.user.last_name }}<h1>
+
+            {% endfor %}
+        {% comment %} <h2> i am user</h2>
+        <a  href="{% url 'user_profile' %}">profile</a><br>
+        <a  href="{% url 'apply_leave' %}">apply leave</a><br>
+        <a  href="{% url 'applied_leaves' %}">applied leave</a><br>
+        <a  href="{% url 'emp_aproved_leaves' %}">aproved leave</a><br>
+        <a  href="{% url 'logout' %}">log out</a>
+         {% endcomment %}
+         
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>employee details</title>
+        {% load static %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <style>
+      body{
+        background-image: url({% static 'img/det.jpg' %});
+        background-size:100%;
+        background-repeat: no-repeat;
+    }
+        input{
+            margin:10px;
+            border:none;
+          }
+          button{
+            margin:10px;
+
+          }
+          select{
+            margin:10px;
+
+          }
+          h5{
+            padding-left:18px;
+          }      .container3{
+            margin:30px 200px;
+            display: flex;
+            flex-direction: column;
+          }
+          .box1{
+            color:white;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction:column;
+            width:100%;
+            
+            
+          }
+          .header{
+            background-image: url({% static 'img/pro.jpg' %});
+            width: 100%;
+            height: 30vh;
+            display: flex;
+            align-items:center;
+            justify-content:center;
+            border-top-left-radius:25px;
+            border-top-right-radius:25px;
+          }
+          .header img{
+            margin-bottom: -180px;
+            z-index: 1;
+            border-radius:15px;
+            
+          }
+          .footer{
+            backdrop-filter: blur(20px);
+            background-color: rgba(0, 0,0, .5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-bottom-left-radius:25px;
+            border-bottom-right-radius:25px;
+            
+        
+          }
+          .name{
+            padding: 100px 10px 10px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color:white;
+          }
+         
+          th,td{
+            border-collapse: collapse;
+            border: none;
+            color:white;
+          }
+          th{
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid rgb(211, 211, 211);
+        
+          }
+          td{
+            padding: 15px;
+            border-bottom: 1px solid rgb(211, 211, 211);;
+          }
+          
+          .container1{
+            margin: 150px;
+            display:flex;
+            background-color:rgba(118, 118, 118, 0.6) ;
+            border-radius: 10px;
+        } 
+      .left{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 50%;
+        color: white;
+        padding: 120px 0;
+    }
+    h1{
+        font-size: 40px;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.324);
+    
+    }
+    .left a{
+        width: 150px;
+        padding: 20px;
+        text-decoration: none;
+        text-align: center;
+        background-color: rgb(49, 82, 215);
+        color: white;
+        border-radius: 10px;
+        margin-top: 20px;
+    
+    }
+    .left a:hover{
+        background-color: rgb(47, 255, 238);
+        color: #000;
+    
+    }
+    
+    .right{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .right img{
+        width: 100%;
+        height: 90%;
+        border-radius: 10px;
+        padding: 0 25px 0 0;
+    }
+    </style>
+
+
+    <body>
+          
+<div class="container3"style="box-shadow: 1px 1px 5px white;">
+    <div class="header">
+        {% load static %}
+		{% if users.user_photo %}
+                                    
+        <img src="{{ users.user_photo.url }}"  class="rounded-circle"width="180px" height="180px" style="box-shadow: 1px 1px 10px white;">
+                                  
+    	{% else %}
+		<img src="{% static 'img/default.png'%}" class="rounded-circle"width="180px" height="180px" style="box-shadow: 1px 1px 10px;">
+        {% endif %}  
+    </div>
+    <div class="footer">
+          <div class="name"><h1>{{ users.user.first_name }} {{ users.user.last_name }}</h1></div>
+    
+
+          <table>
+            <tr>
+                <th>Gender</th>
+                <td>:</td>
+                <td>{{ users.user_gender }}</td>
+            </tr>
+            <tr>
+                <th>Addres</th>
+                <td>:</td>
+                <td>{{ users.user_address }}</td>
+            </tr>
+            <tr>
+                <th>DOB</th>
+                <td>:</td>
+                <td>{{ users.DOB }}</td>
+            </tr>
+            <tr>
+                <th>Email Id</th>
+                <td>:</td>
+                <td>{{ users.user.email }}</td>
+            </tr>
+            <tr>
+                <th>Contact Number</th>
+                <td>:</td>
+                <td>{{ users.user_mobile }}</td>
+            </tr>
+        </table>
+        <a href="javascript:history.go(-1);" class="btn btn-primary my-3 px-3 py-2">Go Back</a>
+
+    </div>
+	
+</div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login here</title>
+        {% load static %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type='text/css' href="" >
+         <!-- Bootstrap CSS -->
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+    </head>
+    <style>
+        body{
+            background-color: bisque;
+            background-image: url({% static 'img/login.jpg' %});
+            background-size:100%; 
+        }
+        /* From uiverse.io by @alexmaracinaru */
+        .card {
+         width: 280px;
+         height: 350px;
+         background: rgba(255, 251, 251, 0.685);
+
+         border-radius: 5px;
+ border: 1px solid rgba(0, 0, 255, .2);
+ transition: all .2s;
+ box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+ position:relative;
+ left:550px;
+ top:100px;
+        }
+        .card:hover {
+            box-shadow: -12px 12px 2px -1px rgba(0, 0, 255, .2);
+           }
+        
+        .form {
+         padding: 25px;
+        }
+        
+        .card_header {
+         display: flex;
+         align-items: center;
+        }
+        
+        .card svg {
+         color: #7878bd;
+         margin-bottom: 20px;
+         margin-right: 5px;
+        }
+        
+        .form_heading {
+         padding-bottom: 20px;
+         font-size: 21px;
+         color: #7878bd;
+        }
+        
+        .field {
+         padding-bottom: 10px;
+        }
+        
+        .input {
+         border-radius: 5px;
+         background-color: #e9e9f7;
+         padding: 5px;
+         width: 100%;
+         color: #7a7ab3;
+         border: 1px solid #dadaf7
+        }
+        
+        .input:focus-visible {
+         outline: 1px solid #aeaed6;
+        }
+        
+        .input::placeholder {
+         color: #bcbcdf;
+        }
+        
+        label {
+         color: rgba(0, 0, 0, 0.877);
+         font-size: 14px;
+         display: block;
+         padding-bottom: 4px;
+        }
+        
+        {% comment %} button {
+         background-color: #7878bd;
+         margin-top: 10px;
+         font-size: 14px;
+         padding: 7px 12px;
+         font-weight: 500;
+         color: white;
+        }
+        
+        button:hover {
+         background-color: #5f5f9c;
+        } {% endcomment %}
+
+        /* From uiverse.io */
+button {
+ --color: #560bad;
+ font-family: inherit;
+ display: inline-block;
+ width: 6em;
+ height: 2em;
+ line-height: 1em;
+ margin: 20px;
+ position: relative;
+ overflow: hidden;
+ border: 2px solid var(--color);
+ transition: color .5s;
+ z-index: 1;
+ font-size: 17px;
+ border-radius: 6px;
+ font-weight: 500;
+ color: var(--color);
+}
+
+button:before {
+ content: "";
+ position: absolute;
+ z-index: -1;
+ background: var(--color);
+ height: 150px;
+ width: 200px;
+ border-radius: 50%;
+}
+
+button:hover {
+ color: #fff;
+}
+
+button:before {
+ top: 100%;
+ left: 100%;
+ transition: all .7s;
+}
+
+button:hover:before {
+ top: -30px;
+ left: -30px;
+}
+
+button:active:before {
+ background: #3a0ca3;
+ transition: background 0s;
+}
+
+           
+
+
+    </style>
+    <body>
+
+        {% for message in messages %}
+        <h5>
+            <div class="alert alert-danger mt-5">
+                {{ message }}
+            </div>
+        </h5>
+{% endfor %}
+
+
+
+{% comment %} <form method="post" action="userlogin" class="" style="" enctype="multipart/form-data">
+{% csrf_token %}
+<div class='py-2'>
+    <input type="text" name="uname" placeholder="Enter username" class="form-control">
+    <input type="password" name="passw" placeholder="Enter password" class="form-control">
+    
+        
+    <button type="submit" class="form-control bg-primary">Submit</button>
+    
+</div> 
+
+
+
+
+</form> {% endcomment %}
+
+
+<form class="form card"  method="post" action="userlogin" style="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card_header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4-5 4v-3H2v-2h8z"></path>
+      </svg>
+      <h1 class="form_heading ">Sign in</h1>
+    </div>
+    <div class="field">
+      <label for="username">Username</label>
+      <input class="input" name="uname" type="text" placeholder="Username" id="username">
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input class="input" name="passw" type="password" placeholder="Password" id="password">
+    </div>
+    <div class="field">
+      <button class="button">Login</button>
+    </div>
+  </form>
+
+        
+        
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>edit profile</title>
+        {% load static %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    </head>
+    <style>
+        /* From uiverse.io by @bhaveshxrawat */
+        .card {
+            width: 500px;
+            height: auto;
+            background: transparent;
+            border: 2px solid #07ff07;
+            box-shadow: 2px 2px 15px #000000 inset;
+            text-align: center;
+            color: #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Pacifico';
+            left:400px
+          }
+          
+          .card:hover {
+            color: #07ff07;
+            box-shadow: 2px 2px 15px #07ff07 inset;
+          }
+
+{% comment %} inputs {% endcomment %}
+/* From uiverse.io by @G4b413l */
+.group {
+ position: relative;
+}
+
+.input {
+ font-size: 16px;
+ padding: 10px 10px 10px 5px;
+ margin-top:20px;
+ display: block;
+ width: 200px;
+ border: none;
+ border-bottom: 1px solid #515151;
+ background: transparent;
+ color:
+}
+
+.input:focus {
+ outline: none;
+}
+
+label {
+ color: #999;
+ font-size: 18px;
+ font-weight: normal;
+ position: absolute;
+ pointer-events: none;
+ left: 5px;
+ top: 10px;
+ transition: 0.2s ease all;
+ -moz-transition: 0.2s ease all;
+ -webkit-transition: 0.2s ease all;
+}
+
+.input:focus ~ label, .input:valid ~ label {
+ top: -20px;
+ font-size: 14px;
+ color: #5264AE;
+}
+
+.bar {
+ position: relative;
+ display: block;
+ width: 200px;
+}
+
+.bar:before, .bar:after {
+ content: '';
+ height: 2px;
+ width: 0;
+ bottom: 1px;
+ position: absolute;
+ background: #5264AE;
+ transition: 0.2s ease all;
+ -moz-transition: 0.2s ease all;
+ -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+ left: 50%;
+}
+
+.bar:after {
+ right: 50%;
+}
+
+.input:focus ~ .bar:before, .input:focus ~ .bar:after {
+ width: 50%;
+}
+
+.highlight {
+ position: absolute;
+ height: 60%;
+ width: 100px;
+ top: 25%;
+ left: 0;
+ pointer-events: none;
+ opacity: 0.5;
+}
+
+.input:focus ~ .highlight {
+ animation: inputHighlighter 0.3s ease;
+}
+
+@keyframes inputHighlighter {
+ from {
+  background: #5264AE;
+ }
+
+ to {
+  width: 0;
+  background: transparent;
+ }
+}
+{% comment %} button {% endcomment %}
+/* From uiverse.io by @nikk7007 */
+button {
+ padding: 0.8em 1.8em;
+ border: 2px solid #17C3B2;
+ position: relative;
+ overflow: hidden;
+ background-color: transparent;
+ text-align: center;
+ text-transform: uppercase;
+ font-size: 16px;
+ transition: .3s;
+ z-index: 1;
+ font-family: inherit;
+ color: #17C3B2;
+}
+
+button::before {
+ content: '';
+ width: 0;
+ height: 300%;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%) rotate(45deg);
+ background: #17C3B2;
+ transition: .5s ease;
+ display: block;
+ z-index: -1;
+}
+
+button:hover::before {
+ width: 105%;
+}
+
+button:hover {
+ color: #111;
+}
+.bg{
+    background-color: darkkhaki;
+}
+
+
+
+    </style>
+    <body class="bg">
+    <div class="card">
+        <form method="post" action="edit_profile" class=" container rounded-1" style="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class='py-2'>
+                {% comment %} <lebel>Select your profile photo</lebel><br>
+                <input type="file" name="user_photo" accept="image/*,default"> {% endcomment %}
+                
+                {% comment %} {{ users.user_photo.url }} {% endcomment %}
+                {% if users.user_photo %}
+                <img src="{{ users.user_photo.url }}" class="w-25">
+                {% else %}
+                <img src="{% static 'img/default.png'%}" class="w-25"><br>
+                
+                
+                {% endif %}
+                <br><lebel>Select your profile photo</lebel><br>
+                <input type="file" name="user_photo" accept="image/*,default">
+
+
+                <div class="group">
+                    <input type="text" name="first_name" value="{{ users.user.first_name }}" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>First Name</label>
+                  </div>
+                  <div class="group">
+                    <input type="text" name="last_name " value="{{ users.user.last_name }}" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Last Name</label>
+                  </div>
+                  <div class="group">
+                    <input type="text" name="user_address" value="{{ users.user_address }}" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Address</label>
+                  </div>
+                  <lebel>You Must Enter This</lebel><br>
+                <input type="radio" name="user_gender" id="male" value="Male">
+                <lebel for="male">Male</lebel>
+                <input type="radio" name="user_gender" id="female" value="Female">
+                <lebel for="male">Female</lebel>
+                  <div class="group">
+                    <input type="email" name="email" value="{{ users.user.email }}" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Email</label>
+                  </div>
+                  <lebel>You Must Enter This</lebel>
+                  <div class="group">
+                    <input type="date" name="DOB" value="{{ users.DOB }}" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>DOB</label>
+                  </div>
+                  <div class="group">
+                    <input type="text" name="username" value="{{ users.user.username }}" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Username</label>
+                  </div>
+                  <div class="group">
+                    <input type="number" name="user_mobile" value="{{ users.user_mobile }}" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Mobile Number</label>
+                  </div>
+                {% comment %} <input type="text" name="first_name" value="{{ users.user.first_name }}" class="form-control" > {% endcomment %}
+                {% comment %} <input type="text" name="last_name " value="{{ users.user.last_name }}" class="form-control"> {% endcomment %}
+                {% comment %} <input type="text" name="user_address" value="{{ users.user_address }}" class="form-control"> {% endcomment %}
+                
+               
+                {% comment %} <input type="email" name="email" value="{{ users.user.email }}" class="form-control"> {% endcomment %}
+                {% comment %} <lebel>You Must Enter This</lebel>
+                <input type="date" name="DOB" value="{{ users.DOB }}" class="form-control"> {% endcomment %}
+                {% comment %} <input type="text" name="username" value="{{ users.user.username }}" class="form-control"> {% endcomment %}
+                {% comment %} <input type="password" name="passw" value="{{ user.password }}" class="form-control"> {% endcomment %}
+                {% comment %} <input type="password" name="cpassw" value="{{ users.first_name }}" class="form-control"> {% endcomment %}
+                
+                {% comment %} <input type="number" name="user_mobile" value="{{ users.user_mobile }}" class="form-control"> {% endcomment %}
+                
+                <div class="py-3r">
+                    
+                    <button type="submit" class="mt-2">update</button>
+                </div>
+            </div>
+
+            
+            </form>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

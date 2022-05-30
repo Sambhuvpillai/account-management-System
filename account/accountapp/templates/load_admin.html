@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>employees</title>
+        {% load static %}
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> 
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+
+    </head>
+    <style>
+      body{
+        background-image: url({% static 'img/admin.jpg' %});
+        background-size:100%;
+        
+        {% comment %} background-repeat: no-repeat; {% endcomment %}
+        
+    }
+
+        /* From uiverse.io by @benjimich */
+.card {
+ width: 250px;
+ height: 273px;
+ {% comment %} display: flex; {% endcomment %}
+ {% comment %} flex-direction: column; {% endcomment %}
+ align-items: center;
+ background: rgba(248, 248, 248, 0.521);
+ border-radius: 12px;
+ box-shadow: inset 5px 5px 10px #a9a9aa77,
+              inset -5px -5px 10px #ffffff7e;
+}
+
+.card .img {
+ height: 110px;
+ margin-top: 1.6em;
+ aspect-ratio: 1;
+ border-radius: 30%;
+ background: rgba(248, 248, 248, 0.521);
+ margin-bottom: 0.4em;
+ box-shadow: -5px -5px 8px #ffffff7a, 
+              5px 5px 8px #a9a9aa7a;
+}
+
+.card .info {
+ text-align: center;
+ margin-top: 0.4em;
+ background: linear-gradient(120deg, rgba(0,194,255,1) 0%, rgba(0,86,255,1) 100%);
+ background-clip: border-box;
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+}
+
+.card .info > span {
+ font-weight: bold;
+ font-size: 1.2em;
+ color: rgba(0, 0, 0, 0.753);
+
+}
+
+ .card a {
+ margin-top:;
+ color: rgba(0, 0, 0, 0.753);
+ text-decoration: none;
+ {% comment %} background: linear-gradient(90deg, rgba(0,194,255,1) 0%, rgba(0,86,255,1) 100%); {% endcomment %}
+ padding: .5em ;
+ border-radius: 0.7em;
+}
+
+.card a:active {
+ box-shadow: inset 3px 3px 3px #0056ff,
+             inset -3px -3px 3px #00c2ff;
+}
+.round{
+    border-radius:25px;
+    height:120px;
+}
+
+
+{% comment %}nav style{% endcomment %}
+.hoverable{
+    display:inline-block;
+    backface-visibility: hidden;
+    vertical-align: middle;
+    position:relative;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    tranform: translateZ(0);
+    transition-duration: .3s;
+    transition-property:transform;
+  }
+  
+  .hoverable:before{
+    position:absolute;
+    pointer-events: none;
+    z-index:-1;
+    content: '';
+    top: 100%;
+    left: 5%;
+    height:10px;
+    width:90%;
+    opacity:0;
+    background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+    /* W3C */
+    transition-duration: 0.3s;
+    transition-property: transform, opacity;
+  }
+  
+  .hoverable:hover, .hoverable:active, .hoverable:focus{
+    transform: translateY(-5px);
+  }
+  .hoverable:hover:before, .hoverable:active:before, .hoverable:focus:before{
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  
+  
+  
+  @keyframes bounce-animation {
+    16.65% {
+      -webkit-transform: translateY(8px);
+      transform: translateY(8px);
+    }
+  
+    33.3% {
+      -webkit-transform: translateY(-6px);
+      transform: translateY(-6px);
+    }
+  
+    49.95% {
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+    }
+  
+    66.6% {
+      -webkit-transform: translateY(-2px);
+      transform: translateY(-2px);
+    }
+  
+    83.25% {
+      -webkit-transform: translateY(1px);
+      transform: translateY(1px);
+    }
+  
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  
+  .bounce {
+    animation-name: bounce-animation;
+    animation-duration: 2s;
+  }
+  
+  
+  
+  /*everything below here is just setting up the page, so dont worry about it */
+  
+  
+  @media (min-width: 768px) {
+    .navbar{
+      text-align: center !important;
+      float: none;
+      display: inline-block;
+      {% comment %} height:20vh; {% endcomment %}
+    }
+  }
+  
+  body {
+    background-color:;
+    font-weight:600;
+    text-align:center !important;
+    color: white;
+  }
+  
+  nav {
+    background: none !important;
+    text-transform:uppercase;
+    li {
+      margin-left: 3em;
+      margin-right: 3em;
+      a{
+        transition: .5s color ease-in-out;
+      }
+    }
+  }
+  
+  .page-title {
+    opacity: .75 !important;
+  }
+  .bg{
+    background-color: rgba(0, 0, 0, 0.575);
+  }
+  
+  {% comment %} button {% endcomment %}
+
+  
+
+    </style>
+    <body>
+
+        {% comment %} <video autoplay loop muted="background">
+
+
+            <source src=""type="video/mp4"></source>
+    
+    
+        </video> {% endcomment %}
+        {% comment %} navbar {% endcomment %}
+      
+        <div class="container-fluid bg ">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <div class="row py-3">
+                        <div class="col-1">
+                  <li><a id="len1" class="hoverable" href="#"></a></li></div> 
+                  <div class="col-3"><li><a id="len2" class="hoverable" href="{% url 'load_leave_requests' %}">Pending Leavss</a></li></div>
+                    <div class="col-3"><li><a id="len3" class="hoverable" href="{% url 'aprove_leave_req' %}">Aproved Leaves</a></li></div>
+                        <div class="col-3"><li><a id="len4" class="hoverable" href="{% url 'logout' %}">Log Out</a></li></div>
+                </div>
+                </ul>
+              </div>
+            </nav>
+            
+          </div>
+        {% comment %} <a  href="{% url 'load_loginpage' %}">employee details</a> {% endcomment %}
+        <section class="container">
+            <div class="row">
+                {% for users in users %}
+                <div class="col-sm-4 py-3">
+                    
+
+                    <div class="card">
+                        <div class="img">
+                            {% if users.user_photo %}
+                                <img src="{{ users.user_photo.url }} " class="w-100 round" >
+                            {% else %}
+                                <img src="{% static 'img/default.png'%}" class="w-100 ">
+                            {% endif %}
+                        </div>
+                          <div class="info  pt-2">
+                            <span>{{ users.user.first_name }}</span><span style="margin-left:8px;">{{ users.user.last_name }}</span>
+                            {% comment %} <p>Web Dev</p> {% endcomment %}
+                          </div>
+                          
+                          <a href="{% url 'emp_details' users.id %}">Details</a>
+                          <a href="{% url 'delete_user' users.id %}" class="mt bg-white text-danger">delete</a>
+                          
+                          
+                        </div>
+                       
+{% comment %} <button class="noselect"><span class="text">Delete</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button> {% endcomment %}
+                        
+                       
+
+                </div>
+                {% endfor %} 
+            </div>
+        </section>
+       
+        
+        <script>
+            $(function(){
+                var str = '#len'; //increment by 1 up to 1-nelemnts
+                $(document).ready(function(){
+                  var i, stop;
+                  i = 1;
+                  stop = 4; //num elements
+                  setInterval(function(){
+                    if (i > stop){
+                      return;
+                    }
+                    $('#len'+(i++)).toggleClass('bounce');
+                  }, 500)
+                });
+              });
+        </script>
+    </body>
+    
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>leave requests</title>
+        {% load static %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+         <!-- Bootstrap CSS -->
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    </head>
+    <style>
+        body{
+            background-image: url({% static 'img/pend.jpg' %});
+        background-size:100%;
+        background-repeat: no-repeat;
+        }
+        .table{
+            background-color: rgba(0, 0, 0, 0.575);
+            border:2px solid black;
+            border-radius: 60px;
+            text-align:center;
+
+        }
+        .round{
+            border-radius:10px;
+        }
+    </style>
+    <body>
+
+<h1 class="text-center text-white py-3">PENDING LEAVES</h1>
+        
+        <table border="": class='text-center table text-white w-100' style="">
+            <thead>
+                <tr>
+                    {% comment %} <th>USER ID</th> {% endcomment %}
+                    <th> USER NAME</th>
+                    
+                    <th>START DATE</th>
+                    <th>END DATE</th>
+                    <th>REASON</th>
+                    <th>ACTION</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    {% comment %} <td>{{ u.user.id }}</td> {% endcomment %}
+                     <td>{{ u.user.first_name }} {{ u.user.last_name }}</td>{% comment %}{% url 'admin_details' teachers.id %} {% endcomment %}
+                
+                    <td>{{ u.startdate }}</td>
+                    <td>{{ u.enddate }}</td>
+                    <td>{{ u.reason }}</td>
+                    <td><button class="bg-primary round p-2"><a href="{% url 'aprove_leave' u.id %}" class="text-light " onClick="return confirm('Are You Sure Want to aprove This request ')">APPROVE </a></button>
+                        <button class="ms-2 bg-danger round p-2">
+                        <a href="{% url 'delete_leave' u.id %}" class="text-light " onClick="return confirm('Are You Sure Want to reject This request ')">REJECT</a></button></td>
+                    {% comment %} <td><a href="{% url 'delete_user' u.id %}" class="delete" onClick="return confirm('Are You Sure Want to Delete This Item ')">Delete</a></td> {% endcomment %}
+                    
+                    
+                </tr>
+            
+                {% endfor %} 
+           
+            
+        </table>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
